@@ -93,6 +93,13 @@ function install_homebrew_cask_packages() {
     install_with_homebrew_cask "gyazo"
     install_with_homebrew_cask "jandi"
     install_with_homebrew_cask "slack"
+    install_with_homebrew_cask "postman"
+
+    open /Applications/docker.app
+    open /Applications/alfred.app
+    open /Applications/jandi.app
+    open /Applications/slack.app
+    open /Applications/postman.app
 }
 
 function install_appstore_packages() {
