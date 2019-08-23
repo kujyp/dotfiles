@@ -1,21 +1,21 @@
 # dotfiles
-### 컴퓨터 초기화 이후 수행해야하는 작업목록
-### 1. 회사컴에서 해야하는것
+## 컴퓨터 초기화 이후 수행해야하는 작업목록
+### 회사컴에서 해야하는것
 https://github.com/kujyp/private_documents/blob/master/docs/%ED%9A%8C%EC%82%AC%EC%BB%B4%EC%97%90%EC%84%9C%ED%95%B4%EC%95%BC%ED%95%98%EB%8A%94%EA%B2%83.md
 
-### 2. source installation_script
+### source installation_script
 ```bash
 source /dev/stdin <<< $(curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/macos.sh)
 ```
 
-### 3. 크롬 설치
+### 크롬 설치
 - 설치
 ```bash
 install_with_homebrew_cask "google-chrome"
 ```
 - 크롬 확장프로그램 로그인 필요
 
-### 3. 세팅시 당장 불편한것부터 해결
+### 세팅시 당장 불편한것부터 해결
 - spectacle 설치
 ```bash
 install_spectacle
@@ -29,7 +29,7 @@ install_caffeine
 - Spotlight > Caffeine.app - 뜨는 경고창 확인
 - Security&Privacy General-Allow apps downloaded from: -> open anyway
 
-### 4. 오래걸리는것부터 설치
+### 오래걸리는것부터 설치
 - icloud 로그인
   - https://github.com/kujyp/accounts/blob/master/accounts/icoud.md
   - app store에서만 하면안되고, iCloudPref.prefPane 에서 한번더 로그인해야 적용됨
@@ -63,7 +63,10 @@ install_with_homebrew_cask "google-backup-and-sync"
   - 구글드라이브 로그인
   - ~/google_drive 경로 > 선택한 폴더만 동기화, google photos 만 제외
 
-### 5. 기타설치
+### 환경 설정
+https://github.com/kujyp/dotfiles/blob/master/docs/gitconfig.md
+
+### 기타설치
 - nosleep
 ```bash
 install_nosleep

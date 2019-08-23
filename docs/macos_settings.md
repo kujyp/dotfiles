@@ -1,0 +1,45 @@
+- 데스크탑 및 화면 보호기 DesktopScreenEffectsPref.prefPane
+  - 화면보호기 탭
+    - 하단에 20분 -> 안함으로 변경
+- 디스플레이 Displays.prefPane
+  - 디스플레이 탭
+    - True Tone 해제
+    - 자동으로 밝기조절 해제
+  - 정렬 탭
+    - 메인모니터 변경
+- 날짜 및 시간 DateAndTime.prefPane
+  - Clock 
+    - Show date 날짜 보기 체크
+- Dock Dock.prefPane
+  - 크기 줄이기
+  - position on screen - left
+- 사용자 및 그룹 Accounts.prefPane
+  - 프로필 사진 드래그해서 변경
+  - 사진은 구글드라이브에 있음.
+    - spotlight > muzi.jpg > Finder 에서 모두 보기... > 드래그
+- 키보드 Keyboard.prefPane
+  - 키 반복 오른쪽으로(빠르게)
+  - 반복 지연 오른쪽으로(짧게)
+- 인터넷 계정 InternetAccounts.prefPane
+  - Google 계정 등록
+- Bluetooth Bluetooth.prefPane
+  - 메뉴 막대에서 bluetooth 보기 - 활성화
+- 작업 표시줄에 배터리 아이콘
+  - show percentage 퍼센트 보기
+- Calendar.app
+  - 설정(cmd+,) > 계정 > +
+  - https://github.com/kujyp/private_documents/blob/master/docs/caldav.md
+- finder.app
+  - 설정(cmd+,)
+    - 일반 General
+      - 데스크탑에서 항목보기 - 외장디스크, `CD, DVD 및 iPod` 제거
+      - 새로운 윈도우 파인더에서 열기 new finder windows show
+        - 클릭 > 기타 선택 > downloads
+    - 사이드바 Sidebar
+      - 데스크탑, 도큐먼트, 다운로드만 남김
+      - 나머지 다 제거
+    - 고급 Advanced
+      - 모든 파일 확장자 보기 show all filename extensions - 활성화
+      - 휴지통에서 30일 지난 항목제거 - 활성화
+      - 검색할때 when performing a search
+        - 현재 폴더 검색 Search the current folder 선택
