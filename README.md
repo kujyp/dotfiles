@@ -64,6 +64,7 @@ install_with_homebrew_cask "google-backup-and-sync"
   - ~/google_drive 경로 > 선택한 폴더만 동기화, google photos 만 제외
 
 ### 환경 설정
+https://github.com/kujyp/dotfiles/blob/master/docs/macos_settings.md
 https://github.com/kujyp/dotfiles/blob/master/docs/gitconfig.md
 
 ### 기타설치
