@@ -122,6 +122,7 @@ function install_android_component_with_sdkmanager() {
 function install_android_components() {
     install_android_component_with_sdkmanager "build-tools;29.0.2"
     install_android_component_with_sdkmanager "build-tools;28.0.3"
+    install_android_component_with_sdkmanager "build-tools;25.0.0"
     install_android_component_with_sdkmanager "cmake;3.6.4111459"
     install_android_component_with_sdkmanager "emulator"
     install_android_component_with_sdkmanager "extras;intel;Hardware_Accelerated_Execution_Manager"
@@ -130,4 +131,6 @@ function install_android_components() {
     install_android_component_with_sdkmanager "system-images;android-25;google_apis_playstore;x86"
     install_android_component_with_sdkmanager "platforms;android-28"
     install_android_component_with_sdkmanager "platforms;android-25"
+    install_android_component_with_sdkmanager "platforms;android-17"
+    install_android_component_with_sdkmanager "sources;android-28"
 }

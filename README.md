@@ -48,6 +48,12 @@ install_with_homebrew_cask "jetbrains-toolbox"
   - android studio 실행 > android sdk 설치
   - platform tools 등 설치
 ```bash
+echo -e "\n\
+# Android\n\
+export ANDROID_HOME=~/Library/Android/sdk\n\
+export PATH=\$PATH:\$ANDROID_HOME/tools/bin:\$ANDROID_HOME/tools/bin:\$ANDROID_HOME/platform-tools" >> ~/.zshrc
+```
+```bash
 install_android_components
 ```
 - pycharm 2019.1.4
