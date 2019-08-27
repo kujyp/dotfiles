@@ -8,6 +8,7 @@ git clone https://github.com/kujyp/snippets
 git clone https://github.com/kujyp/kujyp.github.io
 
 (crontab -l; echo "0 * * * * ~/workspace/documents/dotfiles/scripts/crontab_hourly.sh") | crontab -
+sudo crontab -e -u $(whoami)
 
 pycharm .
 ```
