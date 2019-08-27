@@ -1,4 +1,6 @@
 # dotfiles
+dotfile 을 넣고싶었으나, custom dotfile 이 딱히 없음.
+
 ## 컴퓨터 초기화 이후 수행해야하는 작업목록
 ### 회사컴에서 해야하는것
 https://github.com/kujyp/private_documents/blob/master/docs/%ED%9A%8C%EC%82%AC%EC%BB%B4%EC%97%90%EC%84%9C%ED%95%B4%EC%95%BC%ED%95%98%EB%8A%94%EA%B2%83.md

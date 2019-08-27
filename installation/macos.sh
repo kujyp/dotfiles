@@ -81,6 +81,7 @@ function install_nosleep() {
 function install_homebrew_packages() {
     install_with_homebrew "python3"
     install_with_homebrew "tree"
+    install_with_homebrew "telnet"
 }
 
 function install_homebrew_cask_packages() {
