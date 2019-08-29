@@ -8,7 +8,14 @@ git clone https://github.com/kujyp/snippets
 git clone https://github.com/kujyp/kujyp.github.io
 
 (crontab -l; echo "0 * * * * ~/workspace/documents/dotfiles/scripts/crontab_hourly.sh") | crontab -
-sudo crontab -e -u $(whoami)
+sudo su
+
+git config --global user.email swe.jaeyoungpark@navercorp.com
+git config --global user.name "kujyp"
+(
+cd /Users/jaeyoung/workspace/documents/private_documents
+git fetch origin
+)
 
 pycharm .
 ```
