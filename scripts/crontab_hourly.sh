@@ -13,13 +13,13 @@ function err_msg() {
 }
 
 function git_commit_and_push() {
-    if [[ -z "$(git status --porcelain)" ]]; then
-        info_msg "No changes. Skip..."
-        return
+    if [[ ! -z "$(git status --porcelain)" ]]; then
+        git add .
+        git commit -m "$(git status --short)"
+    else
+        info_msg "No changes. Skip git commit..."
     fi
 
-    git add .
-    git commit -m "$(git status --short)"
     git push
 }
 
