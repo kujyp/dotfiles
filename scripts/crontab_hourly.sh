@@ -12,7 +12,9 @@ function err_msg() {
     echo -e "${red}[ERROR] $@${nocolor}" >&2
 }
 
-function git_commit_and_push() {
+function git_pull_and_commit_and_push() {
+    git pull
+
     if [[ ! -z "$(git status --porcelain)" ]]; then
         git add .
         git commit -m "$(git status --short)"
@@ -29,18 +31,18 @@ info_msg "[${BASH_SOURCE[0]}] ..."
 (
 info_msg "dotfiles..."
 cd ~/workspace/documents/dotfiles
-git_commit_and_push
+git_pull_and_commit_and_push
 )
 
 (
 info_msg "private_documents..."
 cd ~/workspace/documents/private_documents
-git_commit_and_push
+git_pull_and_commit_and_push
 )
 
 (
 info_msg "snippets..."
 cd ~/workspace/documents/snippets
-git_commit_and_push
+git_pull_and_commit_and_push
 )
 info_msg "[${BASH_SOURCE[0]}] done."
