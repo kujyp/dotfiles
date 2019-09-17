@@ -155,3 +155,7 @@ open .
 - IDE preferences for new projects...
   - terminal > shell path > /bin/zsh
   - terminal > shell integration > uncheck
+
+
+### python 설치
+- pip install virtualenv
