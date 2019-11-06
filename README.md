@@ -54,7 +54,7 @@ install_with_homebrew_cask "jetbrains-toolbox"
 echo -e "\n\
 # Android\n\
 export ANDROID_HOME=~/Library/Android/sdk\n\
-export PATH=\$PATH:\$ANDROID_HOME/tools/bin:\$ANDROID_HOME/tools/bin:\$ANDROID_HOME/platform-tools" >> ~/.zshrc
+export PATH=\$PATH:\$ANDROID_HOME/tools/bin:\$ANDROID_HOME/tools/bin:\$ANDROID_HOME/platform-tools" >> ~/.bash_profile
 ```
 ```bash
 install_android_components
@@ -89,6 +89,7 @@ install_with_homebrew_cask "teamviewer"
 - viperftp
 ```bash
 install_with_homebrew "wget"
+echo 'export PATH="/usr/local/opt/gettext/bin:$PATH"' >> ~/.bash_profile
 (
 cd /tmp
 wget https://naarakstudio.com/download/ViperFTPLite.dmg
