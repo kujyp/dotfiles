@@ -30,4 +30,4 @@ echo "0 * * * * ~/workspace/documents/dotfiles/scripts/crontab_hourly.sh"
 ) | crontab -
 
 pycharm .
-curl -o .idea/documents.iml https://raw.githubusercontent.com/kujyp/dotfiles/scripts/document/.idea/documents.iml
+curl -o .idea/documents.iml https://raw.githubusercontent.com/kujyp/dotfiles/master/scripts/document/.idea/documents.iml
