@@ -1,5 +1,6 @@
 #!/bin/bash -e
 
+# curl https://raw.githubusercontent.com/kujyp/dotfiles/master/scripts/crontab_hourly.sh | bash
 yellow="\033[0;33m"
 red="\033[0;31m"
 nocolor="\033[0m"
