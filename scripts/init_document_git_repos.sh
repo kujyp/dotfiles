@@ -1,5 +1,20 @@
 #!/bin/bash
 
+(
+cd /tmp
+git clone https://github.com/kujyp/private_documents
+mkdir -p ~/.ssh
+cp private_documents/keys/macbook_sshkeyfile_190826/id_rsa ~/.ssh/
+cp private_documents/keys/macbook_sshkeyfile_190826/id_rsa.pub ~/.ssh/
+chmod 0400 ~/.ssh/id_rsa
+chmod 0400 ~/.ssh/id_rsa.pub
+
+if ! grep -q "github.com" ~/.ssh/known_hosts; then
+  ssh-keyscan -t rsa "github.com,$(dig +short github.com)" >> ~/.ssh/known_hosts
+fi
+)
+
+
 mkdir -p ~/workspace/documents
 cd ~/workspace/documents
 
