@@ -1,5 +1,6 @@
-#!/bin/bash
+#!/bin/bash -e
 
+# curl https://raw.githubusercontent.com/kujyp/dotfiles/master/scripts/init_document_git_repos.sh | bash
 (
 cd /tmp
 git clone https://github.com/kujyp/private_documents
@@ -28,11 +29,5 @@ crontab -l | grep -v crontab_hourly.sh
 echo "0 * * * * ~/workspace/documents/dotfiles/scripts/crontab_hourly.sh"
 ) | crontab -
 
-#git config --global user.email swe.jaeyoungpark@navercorp.com
-#git config --global user.name "kujyp"
-#(
-#cd /Users/jaeyoung/workspace/documents/private_documents
-#git fetch origin
-#)
-
 pycharm .
+curl -o .idea/documents.iml https://raw.githubusercontent.com/kujyp/dotfiles/scripts/document/.idea/documents.iml

@@ -29,6 +29,18 @@ function git_pull_and_commit_and_push() {
 
 # Main
 info_msg "[${BASH_SOURCE[0]}] ..."
+
+(
+cd ~/workspace/documents
+if [[ -f .idea/documents.iml ]]; then
+    (
+    cd dotfiles/scripts
+    mkdir -p document/.idea
+    )
+    cp .idea/documents.iml dotfiles/scripts/document/.idea/documents.iml
+fi
+)
+
 (
 info_msg "dotfiles..."
 cd ~/workspace/documents/dotfiles
