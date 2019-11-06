@@ -89,8 +89,11 @@ install_with_homebrew_cask "teamviewer"
 - viperftp
 ```bash
 install_with_homebrew "wget"
+(
+cd /tmp
 wget https://naarakstudio.com/download/ViperFTPLite.dmg
-open ViperFTPLite.dmg
+)
+open /tmp/ViperFTPLite.dmg
 ```
 - homebrew cask packages
   - slack 친구목록받아오기 - https://slack.com/get-started
