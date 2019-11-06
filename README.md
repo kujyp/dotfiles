@@ -19,7 +19,7 @@ install_with_homebrew_cask "google-chrome"
 - 크롬 확장프로그램 로그인 필요
 
 ### 세팅시 당장 불편한것부터 해결
-- spectacle 설치
+- spectacle 설치(sudo권한 비밀번호필요)
 ```bash
 install_spectacle
 ```
