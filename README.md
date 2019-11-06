@@ -7,7 +7,8 @@ https://github.com/kujyp/private_documents/blob/master/docs/%ED%9A%8C%EC%82%AC%E
 
 ### source installation_script
 ```bash
-source /dev/stdin <<< $(curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/macos.sh)
+curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/macos.sh > /tmp/macos.sh
+source /tmp/macos.sh
 ```
 
 ### 크롬 설치
@@ -22,7 +23,7 @@ install_with_homebrew_cask "google-chrome"
 ```bash
 install_spectacle
 ```
-- spectacle - preferences - launch at login 체크
+-  spectacle - preferences - launch at login 체크
 - Trackpad.prefPane - 탭하여 클릭하기 활성화
 - caffeine 설치 http://lightheadsw.com/caffeine/
 ```bash
