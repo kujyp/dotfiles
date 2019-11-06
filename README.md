@@ -57,6 +57,7 @@ export ANDROID_HOME=~/Library/Android/sdk\n\
 export PATH=\$PATH:\$ANDROID_HOME/tools/bin:\$ANDROID_HOME/tools/bin:\$ANDROID_HOME/platform-tools" >> ~/.bash_profile
 ```
 ```bash
+install_with_homebrew_cask "homebrew/cask-versions/adoptopenjdk8"
 install_android_components
 ```
 - pycharm 2019.1.4
