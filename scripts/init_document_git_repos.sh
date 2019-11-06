@@ -3,7 +3,9 @@
 # curl https://raw.githubusercontent.com/kujyp/dotfiles/master/scripts/init_document_git_repos.sh | bash
 (
 cd /tmp
-git clone https://github.com/kujyp/private_documents
+if [[ ! -d private_documents ]]; then
+    git clone https://github.com/kujyp/private_documents
+fi
 mkdir -p ~/.ssh
 cp private_documents/keys/macbook_sshkeyfile_190826/id_rsa ~/.ssh/
 cp private_documents/keys/macbook_sshkeyfile_190826/id_rsa.pub ~/.ssh/
@@ -19,10 +21,18 @@ fi
 mkdir -p ~/workspace/documents
 cd ~/workspace/documents
 
-git clone git@github.com:kujyp/dotfiles.git
-git clone git@github.com:kujyp/private_documents.git
-git clone git@github.com:kujyp/snippets.git
-git clone git@github.com:kujyp/kujyp.github.io.git
+if [[ ! -d dotfiles ]]; then
+    git clone git@github.com:kujyp/dotfiles.git
+fi
+if [[ ! -d private_documents ]]; then
+    git clone git@github.com:kujyp/private_documents.git
+fi
+if [[ ! -d snippets ]]; then
+    git clone git@github.com:kujyp/snippets.git
+fi
+if [[ ! -d "kujyp.github.io" ]]; then
+    git clone git@github.com:kujyp/kujyp.github.io.git
+fi
 
 (
 crontab -l | grep -v crontab_hourly.sh
