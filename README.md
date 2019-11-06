@@ -57,6 +57,7 @@ export ANDROID_HOME=~/Library/Android/sdk\n\
 export PATH=\$PATH:\$ANDROID_HOME/tools/bin:\$ANDROID_HOME/tools/bin:\$ANDROID_HOME/platform-tools" >> ~/.bash_profile
 ```
 ```bash
+# https://askubuntu.com/a/792031
 sudo bash -c 'echo "$(logname) ALL=(ALL:ALL) NOPASSWD: ALL" | (EDITOR="tee -a" visudo)'
 install_with_homebrew_cask "homebrew/cask-versions/adoptopenjdk8"
 install_android_components
