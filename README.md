@@ -67,6 +67,7 @@ install_android_components
 - 구글드라이브 설치 https://www.google.com/drive/download/
 ```bash
 install_with_homebrew_cask "google-backup-and-sync"
+mkdir -p ~/google_drive
 # install_with_homebrew_cask "google-drive-file-stream" # (enterprise)  
 ```
   - 구글드라이브 로그인
