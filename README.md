@@ -101,6 +101,7 @@ open /tmp/ViperFTPLite.dmg
 ```
 - homebrew cask packages
   - slack 친구목록받아오기 - https://slack.com/get-started
+  - https://github.com/kujyp/private_documents/blob/master/accounts/jandi.md
 ```bash
 install_homebrew_cask_packages
 ```
