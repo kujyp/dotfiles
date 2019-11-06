@@ -20,6 +20,7 @@
 - 키보드 Keyboard.prefPane
   - 키 반복 오른쪽으로(빠르게)
   - 반복 지연 오른쪽으로(짧게)
+  - Touch bar 보기 - F1, F2 등의 키
 - 인터넷 계정 InternetAccounts.prefPane
   - Google 계정 등록
 - Bluetooth Bluetooth.prefPane
