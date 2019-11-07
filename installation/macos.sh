@@ -82,6 +82,7 @@ function install_homebrew_packages() {
     install_with_homebrew "python3"
     install_with_homebrew "tree"
     install_with_homebrew "telnet"
+    install_with_homebrew "watch"
 }
 
 function install_homebrew_cask_packages() {
@@ -125,6 +126,8 @@ function install_android_components() {
     install_android_component_with_sdkmanager "build-tools;28.0.3"
     install_android_component_with_sdkmanager "build-tools;25.0.0"
     install_android_component_with_sdkmanager "cmake;3.6.4111459"
+    install_android_component_with_sdkmanager "cmake;3.10.2.4988404"
+    install_android_component_with_sdkmanager "ndk-bundle"
     install_android_component_with_sdkmanager "emulator"
     install_android_component_with_sdkmanager "extras;intel;Hardware_Accelerated_Execution_Manager"
     install_android_component_with_sdkmanager "platforms;android-29"
