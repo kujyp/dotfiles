@@ -54,7 +54,7 @@ install_with_homebrew_cask "jetbrains-toolbox"
 echo -e "\n\
 # Android\n\
 export ANDROID_HOME=~/Library/Android/sdk\n\
-export PATH=\$PATH:\$ANDROID_HOME/tools/bin:\$ANDROID_HOME/tools/bin:\$ANDROID_HOME/platform-tools" >> ~/.bash_profile
+export PATH=\$PATH:\$ANDROID_HOME/tools/bin:\$ANDROID_HOME/tools/bin:\$ANDROID_HOME/platform-tools" >> ~/.zshrc
 ```
 ```bash
 # https://askubuntu.com/a/792031
