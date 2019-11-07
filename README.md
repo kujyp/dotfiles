@@ -161,7 +161,8 @@ open .
 
 
 ### IDE 세팅
-- pair 검색해서 3개제거 [], {}, ""
+- pair 검색해서 2개제거 [], ""
+  - {} 는 유용한듯
 - IDE preferences for new projects...
   - terminal > shell path > /bin/zsh
   - terminal > shell integration > uncheck
