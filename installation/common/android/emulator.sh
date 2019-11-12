@@ -33,6 +33,15 @@ function command_exists() {
     command -v "$@" 1> /dev/null 2>&1
 }
 
+function create_avd() {
+    emulator_imagename=$1
+
+    ${sdkmanager} ${emulator_imagename}
+
+    avdname=$(echo ${emulator_imagename} | cut -f2 -d ";")
+    echo no | avdmanager create avd --force -n "${avdname}" -k "${emulator_imagename}"
+}
+
 
 # Main
 if command_exists sdkmanager; then
@@ -54,30 +63,18 @@ info_msg "Sdkmanager [${sdkmanager}] detected."
 
 # sdkmanager --list | grep "x86_64"
 ${sdkmanager} "emulator"
-${sdkmanager} "system-images;android-14;default;armeabi-v7a"
-${sdkmanager} "system-images;android-15;google_apis;armeabi-v7a"
-${sdkmanager} "system-images;android-16;google_apis;armeabi-v7a"
-${sdkmanager} "system-images;android-17;google_apis;armeabi-v7a"
-${sdkmanager} "system-images;android-18;default;armeabi-v7a"
-${sdkmanager} "system-images;android-18;google_apis;armeabi-v7a"
-${sdkmanager} "system-images;android-19;default;armeabi-v7a"
-${sdkmanager} "system-images;android-19;google_apis;armeabi-v7a"
-#${sdkmanager} "system-images;android-21;default;x86_64"
-${sdkmanager} "system-images;android-21;google_apis;x86_64"
-#${sdkmanager} "system-images;android-22;default;x86_64"
-${sdkmanager} "system-images;android-22;google_apis;x86_64"
-#${sdkmanager} "system-images;android-23;default;x86_64"
-${sdkmanager} "system-images;android-23;google_apis;x86_64"
-#${sdkmanager} "system-images;android-24;default;x86_64"
-${sdkmanager} "system-images;android-24;google_apis;x86_64"
-#${sdkmanager} "system-images;android-25;default;x86_64"
-${sdkmanager} "system-images;android-25;google_apis;x86_64"
-#${sdkmanager} "system-images;android-26;default;x86_64"
-${sdkmanager} "system-images;android-26;google_apis;x86_64"
-${sdkmanager} "system-images;android-27;default;x86_64"
-#${sdkmanager} "system-images;android-28;default;x86_64"
-#${sdkmanager} "system-images;android-28;google_apis;x86_64"
-${sdkmanager} "system-images;android-28;google_apis_playstore;x86_64"
-#${sdkmanager} "system-images;android-29;default;x86_64"
-#${sdkmanager} "system-images;android-29;google_apis;x86_64"
-${sdkmanager} "system-images;android-29;google_apis_playstore;x86_64"
+create_avd "system-images;android-14;default;armeabi-v7a"
+create_avd "system-images;android-15;google_apis;armeabi-v7a"
+create_avd "system-images;android-16;google_apis;armeabi-v7a"
+create_avd "system-images;android-17;google_apis;armeabi-v7a"
+create_avd "system-images;android-18;google_apis;armeabi-v7a"
+create_avd "system-images;android-19;google_apis;armeabi-v7a"
+create_avd "system-images;android-21;google_apis;x86_64"
+create_avd "system-images;android-22;google_apis;x86_64"
+create_avd "system-images;android-23;google_apis;x86_64"
+create_avd "system-images;android-24;google_apis;x86_64"
+create_avd "system-images;android-25;google_apis;x86_64"
+create_avd "system-images;android-26;google_apis;x86_64"
+create_avd "system-images;android-27;default;x86_64"
+create_avd "system-images;android-28;google_apis_playstore;x86_64"
+create_avd "system-images;android-29;google_apis_playstore;x86_64"
