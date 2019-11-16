@@ -15,9 +15,10 @@ fi
 git clone https://github.com/ovity/octotree octotree-2.5.6
 (
 cd octotree-2.5.6
-git checkout f00e83b5ed1365974ed84eaf3f03c0d99c79c018 # 2.5.6(Fix issue branch with slashes)
+git checkout b671960972d8e634ccbd10d88fd98693ff3732cf # 2.5.6(Fix issue branch with slashes)
 )
 
+mkdir -p octotree
 mv octotree-2.5.6/dist/chrome.zip octotree/chrome.zip
 (cd octotree; unzip chrome.zip)
 rm -rf octotree-2.5.6

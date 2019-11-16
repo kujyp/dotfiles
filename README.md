@@ -139,27 +139,7 @@ echo -e "\n# Pure\nautoload -U promptinit; promptinit\nprompt pure" >> ~/.zshrc
 ```
 - 공인인증서 - https://github.com/kujyp/private_documents/blob/master/docs/%EA%B3%B5%EC%9D%B8%EC%9D%B8%EC%A6%9D%EC%84%9C.md
 - octotree 구버전설치
-  - 스크립트 실행
-  - chrome 옵션 - 도구더보기 - 확장프로그램 - 개발자모드 활성화 > 폴더 드래그
-  - github.com 사이트에서 > 좌측 환경설정 버튼(톱니바퀴)
-    - token 추가 https://github.com/kujyp/private_documents/blob/master/docs/octotree.md
-    - GitHub Enterprise URLs - https://oss.navercorp.com 추가
-```bash
-install_with_homebrew "wget"
-(
-cd /Applications
-wget https://github.com/ovity/octotree/archive/v2.5.5.zip
-unzip v2.5.5.zip
-mkdir -p octotree
-mv octotree-2.5.5/dist/chrome.zip octotree/chrome.zip
-(cd octotree; unzip chrome.zip)
-rm -rf octotree-2.5.5
-rm -f v2.5.5.zip
-open .
-)
-```
-
-
+  - https://github.com/kujyp/dotfiles/blob/master/installation/common/chrome/octotree.md
 ### IDE 세팅
 - pair 검색해서 2개제거 [], ""
   - {} 는 유용한듯
