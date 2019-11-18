@@ -34,7 +34,12 @@ if [[ -f "$(eval echo ~$(whoami))/.bashrc" ]]; then
     source "$(eval echo ~$(whoami))/.bashrc"
 fi
 
+if ! command_exists git; then
+    info_msg "install [git]..."
+    curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/git.sh > /tmp/git.sh && chmod +x /tmp/git.sh && /tmp/git.sh
+fi
+
 if ! command_exists pyenv; then
     info_msg "install [pyenv]..."
-    curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/pyenv.sh | bash
+    curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/pyenv.sh > /tmp/pyenv.sh && chmod +x /tmp/pyenv.sh && /tmp/pyenv.sh
 fi
