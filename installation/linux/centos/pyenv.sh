@@ -7,9 +7,3 @@ echo "export PATH=\"~/.pyenv/bin:\$PATH\"
 eval \"\$(pyenv init -)\"
 eval \"\$(pyenv virtualenv-init -)\"
 " >> ~/.bashrc
-
-export PATH="~/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-pyenv install 3.6.7

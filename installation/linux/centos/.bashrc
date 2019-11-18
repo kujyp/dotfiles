@@ -39,7 +39,19 @@ if ! command_exists git; then
     curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/git.sh > /tmp/git.sh && chmod +x /tmp/git.sh && /tmp/git.sh
 fi
 
+# Pyenv
 if ! command_exists pyenv; then
     info_msg "install [pyenv]..."
     curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/pyenv.sh > /tmp/pyenv.sh && chmod +x /tmp/pyenv.sh && /tmp/pyenv.sh
 fi
+
+if ! command_exists pyenv; then
+    export PATH="~/.pyenv/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
+
+pyenv install --skip-existing 2.7.17
+pyenv install --skip-existing 3.6.9
+pyenv install --skip-existing 3.7.5
+pyenv install --skip-existing 3.8.0
