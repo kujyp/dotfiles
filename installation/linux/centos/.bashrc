@@ -1,5 +1,7 @@
 # .bashrc
 
+# export HOME=/home/irteam/users/jaeyoung; mkdir -p $HOME; curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/.bashrc > $HOME/.bashrc; source $HOME/.bashrc
+
 yellow="\033[0;33m"
 red="\033[0;31m"
 nocolor="\033[0m"
@@ -23,9 +25,13 @@ function command_exists() {
 
 # Main
 export HOME=/home/irteam/users/jaeyoung
+if [[ ! -d "$HOME" ]]; then
+    info_msg "mkdir [$HOME]..."
+    mkdir -p $HOME
+fi
 
-if [[ -f "$(eval echo ~$USER)/.bashrc" ]]; then
-    source "$(eval echo ~$USER)/.bashrc"
+if [[ -f "$(eval echo ~$(whoami))/.bashrc" ]]; then
+    source "$(eval echo ~$(whoami))/.bashrc"
 fi
 
 if ! command_exists pyenv; then
