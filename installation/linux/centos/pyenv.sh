@@ -8,5 +8,8 @@ eval \"\$(pyenv init -)\"
 eval \"\$(pyenv virtualenv-init -)\"
 " >> ~/.bashrc
 
-source ~/.bashrc
+export PATH="~/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
 pyenv install 3.6.7
