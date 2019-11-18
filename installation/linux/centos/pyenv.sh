@@ -7,7 +7,12 @@ function error_msg() {
 }
 
 
-yum_packages="zlib-devel openssl-devel sqlite-devel readline-devel"
+# yum installation to remove these errors, warnings above.
+#WARNING: The Python bz2 extension was not compiled. Missing the bzip2 lib?
+#WARNING: The Python readline extension was not compiled. Missing the GNU readline lib?
+#WARNING: The Python sqlite3 extension was not compiled. Missing the SQLite3 lib?
+#ERROR: The Python ssl extension was not compiled. Missing the OpenSSL lib?
+yum_packages="zlib-devel openssl-devel sqlite-devel readline-devel bzip2-devel"
 yum update -y \
   && yum install -y \
     ${yum_packages} \

@@ -22,6 +22,27 @@ function command_exists() {
     command -v "$@" 1> /dev/null 2>&1
 }
 
+function install_pyenv() {
+    info_msg "install [pyenv]..."
+    curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/pyenv.sh > /tmp/pyenv.sh && chmod +x /tmp/pyenv.sh && /tmp/pyenv.sh
+
+    if ! command_exists pyenv; then
+        export PATH="~/.pyenv/bin:$PATH"
+        eval "$(pyenv init -)"
+        eval "$(pyenv virtualenv-init -)"
+    fi
+
+    info_msg "install [python 3.7.5]..."
+    pyenv install --skip-existing 3.7.5
+    info_msg "install [python 2.7.15]..."
+    pyenv install --skip-existing 2.7.17
+}
+
+function install_git() {
+    info_msg "install [git]..."
+    curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/git.sh > /tmp/git.sh && chmod +x /tmp/git.sh && /tmp/git.sh
+}
+
 
 # Main
 export HOME=/home/irteam/users/jaeyoung
@@ -35,23 +56,16 @@ if [[ -f "$(eval echo ~$(whoami))/.bashrc" ]]; then
 fi
 
 if ! command_exists git; then
-    info_msg "install [git]..."
-    curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/git.sh > /tmp/git.sh && chmod +x /tmp/git.sh && /tmp/git.sh
+    info_msg "[git] package not installed.
+$ install_git"
 fi
 
 # Pyenv
 if ! command_exists pyenv; then
-    info_msg "install [pyenv]..."
-    curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/pyenv.sh > /tmp/pyenv.sh && chmod +x /tmp/pyenv.sh && /tmp/pyenv.sh
+    info_msg "[pyenv] package not installed.
+$ install_pyenv"
 fi
 
-if ! command_exists pyenv; then
-    export PATH="~/.pyenv/bin:$PATH"
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi
-
-pyenv install --skip-existing 2.7.17
-pyenv install --skip-existing 3.6.9
-pyenv install --skip-existing 3.7.5
-pyenv install --skip-existing 3.8.0
+# todo docker
+# todo docker pull large images
+# todo zsh
