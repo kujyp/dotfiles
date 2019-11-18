@@ -7,7 +7,6 @@ function error_msg() {
 }
 
 
-curl -o v2.21.0.tar.gz -L https://github.com/git/git/archive/v2.21.0.tar.gz
 yum_packages="make gcc openssl-devel curl-devel expat-devel gettext-devel"
 yum update -y \
   && yum install -y \
@@ -21,6 +20,8 @@ $ yum install -y ${yum_packages}
     exit 1
 fi
 
+
+curl -o v2.21.0.tar.gz -L https://github.com/git/git/archive/v2.21.0.tar.gz
 tar -xvf v2.21.0.tar.gz
 (
 cd git-*
