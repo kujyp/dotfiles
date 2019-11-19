@@ -33,8 +33,7 @@ if ! has_yum_packages_installed ${yum_packages}; then
     ${sudo_cmd} rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
 
     ${sudo_cmd} yum install -y \
-        ${yum_packages} \
-      && rm -rf /var/cache/yum
+        ${yum_packages}
 
     if [[ "$?" -ne 0 ]]; then
         error_msg "yum install failed.
