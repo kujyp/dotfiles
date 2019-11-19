@@ -26,7 +26,11 @@ function install_pyenv() {
     bashrc_info_msg "install [pyenv]..."
     curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/pyenv.sh > /tmp/pyenv.sh && chmod +x /tmp/pyenv.sh && /tmp/pyenv.sh
 
-    # todo irteam 에서 yum install 실패 후 진입 문제
+    if [[ ! -f ~/.pyenv/bin/pyenv ]]; then
+        bashrc_error_msg "[pyenv] installation failed."
+        return
+    fi
+
     if ! bashrc_command_exists pyenv; then
         export PATH="~/.pyenv/bin:$PATH"
         eval "$(pyenv init -)"
