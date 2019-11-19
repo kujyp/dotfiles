@@ -23,15 +23,17 @@ function has_yum_packages_installed {
 
 yum_packages="zsh yarn"
 if ! has_yum_packages_installed ${yum_packages}; then
-    if [[ $UID -ne 0 ]]; then
-        error_msg "root privileged required."
-        exit 1
+    if [[ $UID -eq 0 ]]; then
+        sudo_cmd="sudo"
+    else
+        sudo_cmd=""
     fi
-    curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
+
+    curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | ${sudo_cmd} tee /etc/yum.repos.d/yarn.repo
     rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
 
-    yum update -y \
-      && yum install -y \
+    ${sudo_cmd} yum update -y \
+      && ${sudo_cmd} yum install -y \
         ${yum_packages} \
       && rm -rf /var/cache/yum
 
