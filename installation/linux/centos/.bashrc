@@ -2,10 +2,6 @@
 
 # export HOME=/home/irteam/users/jaeyoung; mkdir -p $HOME; curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/.bashrc > $HOME/.bashrc; source $HOME/.bashrc
 
-yellow=""
-red=""
-nocolor=""
-
 function bashrc_info_msg() {
     echo -e "\033[0;33m[INFO] ${1-}\033[0m"
 }
