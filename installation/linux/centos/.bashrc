@@ -80,8 +80,8 @@ function install_docker_pull() {
 export -f install_docker_pull
 
 
-function install_zsh_help() {
-    bashrc_info_msg "$ install_zsh_help
+function install_ohmyzsh_help() {
+    bashrc_info_msg "$ install_ohmyzsh_help
 echo 'y' | sh -c \"\$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)\"
 
 git clone https://github.com/zsh-users/zsh-autosuggestions \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -100,7 +100,7 @@ npm install --global pure-prompt
 echo -e \"\n# Pure\nautoload -U promptinit; promptinit\nprompt pure\" >> ~/.zshrc
 "
 }
-export -f install_zsh_help
+export -f install_ohmyzsh_help
 
 
 # Main
@@ -151,12 +151,13 @@ fi
 # zsh
 if ! bashrc_command_exists zsh; then
     bashrc_info_msg "[zsh] package not installed.
-$ yum install -y zsh"
+$ yum install -y zsh
+$ install_ohmyzsh_help"
 fi
 
 if bashrc_command_exists zsh; then
     if [[ ! -d ~/.oh-my-zsh ]]; then
         bashrc_info_msg "[oh-my-zsh] not installed."
-        install_zsh_help
+        install_ohmyzsh_help
     fi
 fi
