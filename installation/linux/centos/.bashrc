@@ -80,15 +80,12 @@ function install_docker_pull() {
 export -f install_docker_pull
 
 function install_zsh_help() {
-    bashrc_info_msg "$ sudo yum install -y zsh
-$ echo -e \"\\n# zsh\\nif [[ -f ~/.bashrc ]]; then\\n    source ~/.bashrc\\nfi\\n\" >> ~/.zshrc
-$ install_ohmyzsh_help"
-}
-export -f install_zsh_help
+    bashrc_info_msg "[install_zsh_help]
+sudo yum install -y zsh
+curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+sudo rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
+sudo yum install -y yarn
 
-function install_ohmyzsh_help() {
-    install_zsh_help
-    bashrc_info_msg "$ install_ohmyzsh_help
 echo 'y' | sh -c \"\$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)\"
 
 git clone https://github.com/zsh-users/zsh-autosuggestions \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -99,12 +96,15 @@ git clone https://github.com/zsh-users/zsh-completions \${ZSH_CUSTOM:=~/.oh-my-z
 sed -i -e \"s/^plugins.*/plugins=(git z zsh-syntax-highlighting zsh-autosuggestions)/\" ~/.zshrc
 sed -i -e \"s/^ZSH_THEME.*/ZSH_THEME=\"\"/\" ~/.zshrc
 
-curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
-sudo rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
-sudo yum install -y yarn
-
 yarn global add pure-prompt
-echo -e \"\n# Pure\nautoload -U promptinit; promptinit\nprompt pure\" >> ~/.zshrc
+echo -e \"\\\\n# zsh\\\\nif [[ -f ~/.bashrc ]]; then\\\\n    source ~/.bashrc\\\\nfi\\\\n\" >> ~/.zshrc
+echo -e \"\\\\n# Pure\\\\nautoload -U promptinit; promptinit\\\\nprompt pure\" >> ~/.zshrc
+"
+}
+export -f install_zsh_help
+
+function install_ohmyzsh_help() {
+    bashrc_info_msg "$ install_ohmyzsh_help
 "
 }
 export -f install_ohmyzsh_help
