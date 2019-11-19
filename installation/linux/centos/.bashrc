@@ -1,7 +1,7 @@
 # .bashrc
 
 # export HOME=/home/irteam/users/jaeyoung; mkdir -p $HOME; curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/.bashrc > $HOME/.bashrc; source $HOME/.bashrc
-
+# init_statements="export HOME=$remote_home; if [[ ! -f ~/.bashrc ]]; then curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/.bashrc > \$HOME/.bashrc; fi; source \$HOME/.bashrc"
 function bashrc_info_msg() {
     echo -e "\033[0;33m[INFO] ${1-}\033[0m"
 }
@@ -81,7 +81,12 @@ export -f install_docker_pull
 
 function install_zsh_help() {
     bashrc_info_msg "$ yum install -y zsh
-$ echo -e \"\n# zsh\nif [[ -f ~/.bashrc ]]; then\n    source ~/.bashrc\nfi\n\" >> ~/.bashrc
+$ echo \"
+# zsh
+if [[ -f ~/.bashrc ]]; then
+    source ~/.bashrc
+fi
+\" >> ~/.zshrc
 $ install_ohmyzsh_help"
 }
 export -f install_zsh_help
