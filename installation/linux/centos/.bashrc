@@ -52,6 +52,33 @@ function install_git() {
 }
 export -f install_git
 
+function echo_large_docker_images() {
+    echo "\
+registry.navercorp.com/mtengine/cuda_python_base:cuda9.0_cudnn7.3_python3.6.7
+registry.navercorp.com/mtengine/cuda_python_base:cuda10.0_cudnn7.3_python3.6.7
+registry.navercorp.com/mtengine/mttok:python3.6.7
+registry.navercorp.com/mtengine/mttrain:2.2.0rc6
+"
+}
+export -f echo_large_docker_images
+
+function large_docker_image_pulled() {
+    for each in $(echo_large_docker_images); do
+        if [[ -z $(docker images --filter=reference="${each}" --format="{{.Repository}}:{{.Tag}}") ]]; then
+            false
+            return
+        fi
+    done
+    true
+}
+
+function install_docker_pull() {
+    for each in $(echo_large_docker_images); do
+        docker pull "${each}"
+    done
+}
+export -f install_docker_pull
+
 
 # Main
 export HOME=/home/irteam/users/jaeyoung
@@ -64,17 +91,46 @@ if [[ -f "$(eval echo ~$(whoami))/.bashrc" ]]; then
     source "$(eval echo ~$(whoami))/.bashrc"
 fi
 
+
+# git
 if ! bashrc_command_exists git; then
     bashrc_info_msg "[git] package not installed.
 $ install_git"
 fi
 
-# Pyenv
+
+# pyenv
+if [[ -f ~/.pyenv/bin/pyenv ]]; then
+    export PATH="~/.pyenv/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
 if ! bashrc_command_exists pyenv; then
     bashrc_info_msg "[pyenv] package not installed.
 $ install_pyenv"
 fi
 
-# todo docker
-# todo docker pull large images
-# todo zsh
+
+# docker
+if ! bashrc_command_exists docker; then
+    bashrc_info_msg "[docker] package not installed.
+$ curl -sL http://mtdependency.navercorp.com/static/packages/install_docker_and_nvidia_docker-0.5.0.sh | sudo bash"
+fi
+
+if bashrc_command_exists docker; then
+    if ! large_docker_image_pulled; then
+        bashrc_info_msg "[large docker images] not pulled.
+$ install_docker_pull"
+    fi
+fi
+
+
+# zsh
+if ! bashrc_command_exists zsh; then
+    bashrc_info_msg "[zsh] package not installed.
+$ yum update -y && yum install -y zsh
+$ sudo yum update -y && sudo yum install -y zsh
+
+$ chsh -s \$(which zsh)
+$ sh -c \"\$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)\""
+fi
