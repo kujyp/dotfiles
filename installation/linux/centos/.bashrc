@@ -80,13 +80,8 @@ function install_docker_pull() {
 export -f install_docker_pull
 
 function install_zsh_help() {
-    bashrc_info_msg "$ yum install -y zsh
-$ echo \"
-# zsh
-if [[ -f ~/.bashrc ]]; then
-    source ~/.bashrc
-fi
-\" >> ~/.zshrc
+    bashrc_info_msg "$ sudo yum install -y zsh
+$ echo -e \"\\n# zsh\\nif [[ -f ~/.bashrc ]]; then\\n    source ~/.bashrc\\nfi\\n\" >> ~/.zshrc
 $ install_ohmyzsh_help"
 }
 export -f install_zsh_help
