@@ -1,3 +1,5 @@
+- Trackpad.prefPane
+  - 탭하여 클릭하기 활성화
 - 데스크탑 및 화면 보호기 DesktopScreenEffectsPref.prefPane
   - 화면보호기 탭
     - 하단에 20분 -> 안함으로 변경
