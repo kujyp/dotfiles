@@ -137,8 +137,3 @@ if ! bashrc_command_exists zsh || [[ ! -d ~/.oh-my-zsh ]]; then
     bashrc_info_msg "[zsh] or [oh-my-zsh] package not installed.
 $ install_zsh"
 fi
-
-if bashrc_command_exists zsh && [[ -d ~/.oh-my-zsh ]] && [[ $(basename $0) != zsh ]]; then
-    zsh --login
-    exit
-fi
