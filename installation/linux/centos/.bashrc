@@ -79,29 +79,12 @@ function install_docker_pull() {
 }
 export -f install_docker_pull
 
-function install_zsh_help() {
-    bashrc_info_msg "[install_zsh_help]
-sudo yum install -y zsh
-curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
-sudo rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
-sudo yum install -y yarn
-
-echo 'y' | sh -c \"\$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)\"
-
-git clone https://github.com/zsh-users/zsh-autosuggestions \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/agkozak/zsh-z \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-z
-git clone https://github.com/zsh-users/zsh-completions \${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
-
-sed -i -e \"s/^plugins.*/plugins=(git z zsh-syntax-highlighting zsh-autosuggestions)/\" ~/.zshrc
-sed -i -e \"s/^ZSH_THEME.*/ZSH_THEME=\"\"/\" ~/.zshrc
-
-yarn global add pure-prompt
-echo -e \"\\\\n# zsh\\\\nif [[ -f ~/.bashrc ]]; then\\\\n    source ~/.bashrc\\\\nfi\\\\n\" >> ~/.zshrc
-echo -e \"\\\\n# Pure\\\\nautoload -U promptinit; promptinit\\\\nprompt pure\" >> ~/.zshrc
-"
+function install_zsh() {
+    bashrc_info_msg "install [zsh]..."
+    curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/zsh.sh > /tmp/zsh.sh && chmod +x /tmp/zsh.sh && /tmp/zsh.sh
+    rm -f /tmp/git.sh
 }
-export -f install_zsh_help
+export -f install_zsh
 
 
 # Main
@@ -150,14 +133,7 @@ fi
 
 
 # zsh
-if ! bashrc_command_exists zsh; then
-    bashrc_info_msg "[zsh] package not installed."
-    install_zsh_help
-fi
-
-if bashrc_command_exists zsh; then
-    if [[ ! -d ~/.oh-my-zsh ]]; then
-        bashrc_info_msg "[oh-my-zsh] not installed."
-        install_ohmyzsh_help
-    fi
+if ! bashrc_command_exists zsh || [[ ! -d ~/.oh-my-zsh ]]; then
+    bashrc_info_msg "[zsh] or [oh-my-zsh] package not installed.
+$ install_zsh"
 fi
