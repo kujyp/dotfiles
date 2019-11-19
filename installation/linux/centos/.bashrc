@@ -38,11 +38,13 @@ function install_pyenv() {
     info_msg "install [python 2.7.15]..."
     pyenv install --skip-existing 2.7.17
 }
+export -f install_pyenv
 
 function install_git() {
     info_msg "install [git]..."
     curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/git.sh > /tmp/git.sh && chmod +x /tmp/git.sh && /tmp/git.sh
 }
+export -f install_git
 
 
 # Main
