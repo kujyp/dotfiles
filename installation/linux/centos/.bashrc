@@ -79,6 +79,13 @@ function install_docker_pull() {
 }
 export -f install_docker_pull
 
+function install_zsh_help() {
+    install_zsh_help
+    bashrc_info_msg "$ yum install -y zsh
+$ echo -e \"\n# zsh\nif [[ -f ~/.bashrc ]]; then\n    source ~/.bashrc\nfi\n\" >> ~/.bashrc
+$ install_ohmyzsh_help"
+}
+export -f install_zsh_help
 
 function install_ohmyzsh_help() {
     bashrc_info_msg "$ install_ohmyzsh_help
@@ -96,7 +103,7 @@ curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yu
 sudo rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
 sudo yum install -y yarn
 
-npm install --global pure-prompt
+yarn global add pure-prompt
 echo -e \"\n# Pure\nautoload -U promptinit; promptinit\nprompt pure\" >> ~/.zshrc
 "
 }
@@ -150,9 +157,8 @@ fi
 
 # zsh
 if ! bashrc_command_exists zsh; then
-    bashrc_info_msg "[zsh] package not installed.
-$ yum install -y zsh
-$ install_ohmyzsh_help"
+    bashrc_info_msg "[zsh] package not installed."
+    install_zsh_help
 fi
 
 if bashrc_command_exists zsh; then
