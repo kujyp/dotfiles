@@ -94,10 +94,6 @@ if [[ ! -d "$HOME" ]]; then
     mkdir -p $HOME
 fi
 
-if [[ -f "$(eval echo ~$(whoami))/.bashrc" ]]; then
-    source "$(eval echo ~$(whoami))/.bashrc"
-fi
-
 
 # git
 if ! bashrc_command_exists git; then
