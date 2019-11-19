@@ -25,6 +25,7 @@ export -f bashrc_command_exists
 function install_pyenv() {
     bashrc_info_msg "install [pyenv]..."
     curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/pyenv.sh > /tmp/pyenv.sh && chmod +x /tmp/pyenv.sh && /tmp/pyenv.sh
+    rm -f /tmp/pyenv.sh
 
     if [[ ! -f ~/.pyenv/bin/pyenv ]]; then
         bashrc_error_msg "[pyenv] installation failed."
@@ -47,6 +48,7 @@ export -f install_pyenv
 function install_git() {
     bashrc_info_msg "install [git]..."
     curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/git.sh > /tmp/git.sh && chmod +x /tmp/git.sh && /tmp/git.sh
+    rm -f /tmp/git.sh
 }
 export -f install_git
 
