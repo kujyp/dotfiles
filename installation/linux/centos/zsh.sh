@@ -32,8 +32,7 @@ if ! has_yum_packages_installed ${yum_packages}; then
     curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | ${sudo_cmd} tee /etc/yum.repos.d/yarn.repo
     ${sudo_cmd} rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
 
-    ${sudo_cmd} yum update -y \
-      && ${sudo_cmd} yum install -y \
+    ${sudo_cmd} yum install -y \
         ${yum_packages} \
       && rm -rf /var/cache/yum
 
