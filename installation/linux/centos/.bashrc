@@ -127,10 +127,33 @@ fi
 
 # zsh
 if ! bashrc_command_exists zsh; then
-    bashrc_info_msg "[zsh] package not installed.
+    bashrc_info_msg '[zsh] package not installed.
 $ yum update -y && yum install -y zsh
 $ sudo yum update -y && sudo yum install -y zsh
 
-$ chsh -s \$(which zsh)
-$ sh -c \"\$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)\""
+$ chsh -s $(which zsh)'
+fi
+
+if bashrc_command_exists zsh; then
+    if [[ ! -d ~/.oh-my-zsh ]]; then
+        bashrc_info_msg "[oh-my-zsh] not installed.
+
+sh -c \"\$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)\"
+
+git clone https://github.com/zsh-users/zsh-autosuggestions \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/agkozak/zsh-z \${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-z
+git clone https://github.com/zsh-users/zsh-completions \${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
+
+sed -i -e \"s/^plugins.*/plugins=(git z zsh-syntax-highlighting zsh-autosuggestions)/\" ~/.zshrc
+sed -i -e \"s/^ZSH_THEME.*/ZSH_THEME=\"\"/\" ~/.zshrc
+
+curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+sudo rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
+sudo yum install yarn
+
+npm install --global pure-prompt
+echo -e \"\n# Pure\nautoload -U promptinit; promptinit\nprompt pure\" >> ~/.zshrc
+"
+    fi
 fi
