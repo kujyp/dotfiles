@@ -103,12 +103,6 @@ echo -e \"\\\\n# Pure\\\\nautoload -U promptinit; promptinit\\\\nprompt pure\" >
 }
 export -f install_zsh_help
 
-function install_ohmyzsh_help() {
-    bashrc_info_msg "$ install_ohmyzsh_help
-"
-}
-export -f install_ohmyzsh_help
-
 
 # Main
 export HOME=/home/irteam/users/jaeyoung
