@@ -80,7 +80,6 @@ function install_docker_pull() {
 export -f install_docker_pull
 
 function install_zsh_help() {
-    install_zsh_help
     bashrc_info_msg "$ yum install -y zsh
 $ echo -e \"\n# zsh\nif [[ -f ~/.bashrc ]]; then\n    source ~/.bashrc\nfi\n\" >> ~/.bashrc
 $ install_ohmyzsh_help"
@@ -88,6 +87,7 @@ $ install_ohmyzsh_help"
 export -f install_zsh_help
 
 function install_ohmyzsh_help() {
+    install_zsh_help
     bashrc_info_msg "$ install_ohmyzsh_help
 echo 'y' | sh -c \"\$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)\"
 
