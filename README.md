@@ -124,7 +124,7 @@ install_with_homebrew_cask "iterm2"
 install_with_homebrew "zsh"
 install_with_homebrew "zsh-completions"
 install_with_homebrew "yarn"
-npm install --global pure-prompt
+yarn global add pure-prompt
 
 chsh -s /bin/zsh $whoami
 
