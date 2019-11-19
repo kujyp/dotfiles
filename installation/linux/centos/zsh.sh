@@ -24,9 +24,9 @@ function has_yum_packages_installed {
 yum_packages="zsh yarn"
 if ! has_yum_packages_installed ${yum_packages}; then
     if [[ $UID -eq 0 ]]; then
-        sudo_cmd="sudo"
-    else
         sudo_cmd=""
+    else
+        sudo_cmd="sudo"
     fi
 
     curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | ${sudo_cmd} tee /etc/yum.repos.d/yarn.repo
