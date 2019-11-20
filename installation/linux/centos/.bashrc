@@ -79,24 +79,21 @@ function install_docker_pull() {
 }
 export -f install_docker_pull
 
-function has_yum_package_installed {
-    yum list installed "$@" >/dev/null 2>&1
-}
-
-function has_yum_packages_installed {
+function bashrc_has_yum_packages_installed {
     for each in $@; do
-        if ! has_yum_package_installed "${each}"; then
+        if ! yum list installed "${each}" >/dev/null 2>&1; then
             false
             return
         fi
     done
     true
 }
+export -f bashrc_has_yum_packages_installed
 
 function install_zsh() {
     bashrc_info_msg "install [zsh]..."
 
-    if ! has_yum_packages_installed "zsh yarn"; then
+    if ! bashrc_has_yum_packages_installed "zsh yarn"; then
         bashrc_error_msg "install zsh, yarn first
 $ yum install -y zsh yarn"
         return
