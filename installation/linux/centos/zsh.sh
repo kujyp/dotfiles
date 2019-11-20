@@ -24,7 +24,10 @@ function has_yum_packages_installed {
 yum_packages="zsh yarn"
 if ! has_yum_packages_installed ${yum_packages}; then
     error_msg "install zsh, yarn first
-$ yum install -y zsh yarn"
+
+curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+sudo rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
+sudo yum install -y zsh yarn"
     exit 1
 fi
 
