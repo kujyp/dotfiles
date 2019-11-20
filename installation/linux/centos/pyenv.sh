@@ -10,18 +10,6 @@ function info_msg() {
     echo -e "\033[0;33m[INFO] ${1-}\033[0m"
 }
 
-function echo_rcfile() {
-    if [[ "$(basename $SHELL)" == "bash" ]]; then
-        if [[ $(uname) == Darwin* ]]; then
-            echo ".bash_profile"
-        else
-            echo ".bashrc"
-        fi
-    elif [[ "$(basename $SHELL)" == "zsh" ]]; then
-        echo ".zshrc"
-    fi
-}
-
 function has_yum_package_installed {
     yum list installed "$@" >/dev/null 2>&1
 }
@@ -53,10 +41,11 @@ fi
 
 curl https://pyenv.run | bash
 
-echo "export PATH=\"~/.pyenv/bin:\$PATH\"
+echo "export PATH=~/.pyenv/bin:\$PATH
 eval \"\$(pyenv init -)\"
 eval \"\$(pyenv virtualenv-init -)\"
-" >> ~/$(echo_rcfile)
+" >> ~/.zshrc
+source ~/.zshrc
 
 info_msg "install [python 3.7.5]..."
 pyenv install --skip-existing 3.7.5
