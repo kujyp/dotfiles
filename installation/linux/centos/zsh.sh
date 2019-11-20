@@ -23,24 +23,9 @@ function has_yum_packages_installed {
 
 yum_packages="zsh yarn"
 if ! has_yum_packages_installed ${yum_packages}; then
-    if [[ $UID -eq 0 ]]; then
-        sudo_cmd=""
-    else
-        sudo_cmd="sudo"
-    fi
-
-    curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | ${sudo_cmd} tee /etc/yum.repos.d/yarn.repo
-    ${sudo_cmd} rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
-
-    ${sudo_cmd} yum install -y \
-        ${yum_packages}
-
-    if [[ "$?" -ne 0 ]]; then
-        error_msg "yum install failed.
-$ yum install -y ${yum_packages}
-"
-        exit 1
-    fi
+    error_msg "install zsh, yarn first
+$ yum install -y zsh yarn"
+    exit 1
 fi
 
 

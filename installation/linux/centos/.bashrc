@@ -79,8 +79,28 @@ function install_docker_pull() {
 }
 export -f install_docker_pull
 
+function has_yum_package_installed {
+    yum list installed "$@" >/dev/null 2>&1
+}
+
+function has_yum_packages_installed {
+    for each in $@; do
+        if ! has_yum_package_installed "${each}"; then
+            false
+            return
+        fi
+    done
+    true
+}
+
 function install_zsh() {
     bashrc_info_msg "install [zsh]..."
+
+    if ! has_yum_packages_installed "zsh yarn"; then
+        bashrc_error_msg "install zsh, yarn first
+$ yum install -y zsh yarn"
+        return
+    fi
     curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/zsh.sh > /tmp/zsh.sh && chmod +x /tmp/zsh.sh && /tmp/zsh.sh
     rm -f /tmp/git.sh
 }
