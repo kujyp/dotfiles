@@ -150,3 +150,7 @@ echo -e "\n# Pure\nautoload -U promptinit; promptinit\nprompt pure" >> ~/.zshrc
 
 ### python 설치
 - pip install virtualenv
+
+
+### document init
+- `curl https://raw.githubusercontent.com/kujyp/dotfiles/master/scripts/init_document_git_repos.sh | bash`
