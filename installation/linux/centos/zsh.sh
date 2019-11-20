@@ -21,11 +21,11 @@ function has_yum_packages_installed {
 }
 
 
-yum_packages="zsh npm"
+yum_packages="zsh"
 if ! has_yum_packages_installed ${yum_packages}; then
-    error_msg "install zsh, npm first
+    error_msg "install zsh first
 
-sudo yum install -y zsh npm"
+sudo yum install -y zsh"
     exit 1
 fi
 
