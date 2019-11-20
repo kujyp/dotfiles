@@ -29,3 +29,4 @@ make prefix=/usr install
 )
 rm -rf git-*
 rm -f v2.21.0.tar.gz
+# git config --global credential.helper 'cache --timeout=600000' # 6.94 days
