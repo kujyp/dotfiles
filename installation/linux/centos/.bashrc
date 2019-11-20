@@ -1,26 +1,23 @@
 # .bashrc
 
+# curl https://raw.githubusercontent.com/kujyp/dotfiles/master/scripts/crontab_hourly.sh | bash
 # export HOME=/home/irteam/users/jaeyoung; mkdir -p $HOME; curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/.bashrc > $HOME/.bashrc; source $HOME/.bashrc
 # init_statements="export HOME=$remote_home; if [[ ! -f ~/.bashrc ]]; then curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/.bashrc > \$HOME/.bashrc; fi; source \$HOME/.bashrc"
 function bashrc_info_msg() {
     echo -e "\033[0;33m[INFO] ${1-}\033[0m"
 }
-export -f bashrc_info_msg
 
 function bashrc_error_msg() {
     echo -e "\033[0;31m[ERROR] ${1-}\033[0m"
 }
-export -f bashrc_error_msg
 
 function bashrc_warning_msg() {
     echo -e "\033[0;31m[WARNING] ${1-}\033[0m"
 }
-export -f bashrc_warning_msg
 
 function bashrc_command_exists() {
     command -v "$@" 1> /dev/null 2>&1
 }
-export -f bashrc_command_exists
 
 function install_pyenv() {
     bashrc_info_msg "install [pyenv]..."
@@ -37,20 +34,13 @@ function install_pyenv() {
         eval "$(pyenv init -)"
         eval "$(pyenv virtualenv-init -)"
     fi
-
-    bashrc_info_msg "install [python 3.7.5]..."
-    pyenv install --skip-existing 3.7.5
-    bashrc_info_msg "install [python 2.7.15]..."
-    pyenv install --skip-existing 2.7.17
 }
-export -f install_pyenv
 
 function install_git() {
     bashrc_info_msg "install [git]..."
     curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/git.sh > /tmp/git.sh && chmod +x /tmp/git.sh && /tmp/git.sh
     rm -f /tmp/git.sh
 }
-export -f install_git
 
 function echo_large_docker_images() {
     echo "\
@@ -60,7 +50,6 @@ registry.navercorp.com/mtengine/mttok:python3.6.7
 registry.navercorp.com/mtengine/mttrain:2.2.0rc6
 "
 }
-export -f echo_large_docker_images
 
 function large_docker_image_pulled() {
     for each in $(echo_large_docker_images); do
@@ -77,7 +66,6 @@ function install_docker_pull() {
         docker pull "${each}"
     done
 }
-export -f install_docker_pull
 
 function bashrc_has_yum_packages_installed {
     for each in $@; do
@@ -88,7 +76,7 @@ function bashrc_has_yum_packages_installed {
     done
     true
 }
-export -f bashrc_has_yum_packages_installed
+
 
 function install_zsh() {
     bashrc_info_msg "install [zsh, oh-my-zsh]..."
@@ -102,7 +90,18 @@ $ sudo yum install -y zsh"
     curl https://raw.githubusercontent.com/kujyp/dotfiles/master/installation/linux/centos/zsh.sh > /tmp/zsh.sh && chmod +x /tmp/zsh.sh && /tmp/zsh.sh
     rm -f /tmp/git.sh
 }
-export -f install_zsh
+if [[ "$(basename $SHELL)" == "bash" ]]; then
+    export -f install_pyenv
+    export -f install_docker_pull
+    export -f bashrc_has_yum_packages_installed
+    export -f install_zsh
+    export -f bashrc_info_msg
+    export -f bashrc_error_msg
+    export -f bashrc_warning_msg
+    export -f bashrc_command_exists
+    export -f install_git
+    export -f echo_large_docker_images
+fi
 
 
 # Main

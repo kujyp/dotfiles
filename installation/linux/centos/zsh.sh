@@ -40,3 +40,4 @@ git clone https://github.com/agkozak/zsh-z ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/pl
 git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
 
 sed -i -e "s/^plugins.*/plugins=(git z zsh-syntax-highlighting zsh-autosuggestions)/" ~/.zshrc
+echo -e "\n# Bashrc\nif [[ -f ~/.bashrc ]]; then\n   source ~/.bashrc\nfi\n" >> ~/.zshrc

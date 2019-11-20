@@ -6,6 +6,22 @@ function error_msg() {
     echo -e "\033[0;31m[ERROR] ${1-}\033[0m"
 }
 
+function info_msg() {
+    echo -e "\033[0;33m[INFO] ${1-}\033[0m"
+}
+
+function echo_rcfile() {
+    if [[ "$(basename $SHELL)" == "bash" ]]; then
+        if [[ $(uname) == Darwin* ]]; then
+            echo ".bash_profile"
+        else
+            echo ".bashrc"
+        fi
+    elif [[ "$(basename $SHELL)" == "zsh" ]]; then
+        echo ".zshrc"
+    fi
+}
+
 function has_yum_package_installed {
     yum list installed "$@" >/dev/null 2>&1
 }
@@ -28,17 +44,10 @@ function has_yum_packages_installed {
 #ERROR: The Python ssl extension was not compiled. Missing the OpenSSL lib?
 yum_packages="zlib-devel openssl-devel sqlite-devel readline-devel bzip2-devel"
 if ! has_yum_packages_installed ${yum_packages}; then
-    yum update -y \
-      && yum install -y \
-        ${yum_packages} \
-      && rm -rf /var/cache/yum
-
-    if [[ "$?" -ne 0 ]]; then
-        error_msg "yum install failed.
+    error_msg "install dependencies first.
 $ yum install -y ${yum_packages}
 "
-        exit 1
-    fi
+    exit 1
 fi
 
 
@@ -47,4 +56,9 @@ curl https://pyenv.run | bash
 echo "export PATH=\"~/.pyenv/bin:\$PATH\"
 eval \"\$(pyenv init -)\"
 eval \"\$(pyenv virtualenv-init -)\"
-" >> ~/.bashrc
+" >> ~/$(echo_rcfile)
+
+info_msg "install [python 3.7.5]..."
+pyenv install --skip-existing 3.7.5
+info_msg "install [python 2.7.15]..."
+pyenv install --skip-existing 2.7.17
