@@ -21,13 +21,11 @@ function has_yum_packages_installed {
 }
 
 
-yum_packages="zsh yarn"
+yum_packages="zsh npm"
 if ! has_yum_packages_installed ${yum_packages}; then
-    error_msg "install zsh, yarn first
+    error_msg "install zsh, npm first
 
-curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
-sudo rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
-sudo yum install -y zsh yarn"
+sudo yum install -y zsh npm"
     exit 1
 fi
 
@@ -35,14 +33,10 @@ fi
 echo 'y' | sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+chmod g-w,o-w ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+chmod g-w,o-w ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/agkozak/zsh-z ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-z
 git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
 
 sed -i -e "s/^plugins.*/plugins=(git z zsh-syntax-highlighting zsh-autosuggestions)/" ~/.zshrc
-sed -i -e "s/^ZSH_THEME.*/ZSH_THEME=\"\"/" ~/.zshrc
-
-yarn global add pure-prompt
-echo "# Pure
-autoload -U promptinit; promptinit
-prompt pure" >> ~/.zshrc
