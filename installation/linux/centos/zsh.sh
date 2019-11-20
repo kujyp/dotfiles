@@ -40,10 +40,6 @@ sed -i -e "s/^plugins.*/plugins=(git z zsh-syntax-highlighting zsh-autosuggestio
 sed -i -e "s/^ZSH_THEME.*/ZSH_THEME=\"\"/" ~/.zshrc
 
 yarn global add pure-prompt
-echo "# zsh
-if [[ -f ~/.bashrc ]]; then
-    source ~/.bashrc
-fi" >> ~/.zshrc
 echo "# Pure
 autoload -U promptinit; promptinit
 prompt pure" >> ~/.zshrc
