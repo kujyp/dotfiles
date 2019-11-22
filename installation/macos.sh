@@ -79,10 +79,13 @@ function install_nosleep() {
 }
 
 function install_homebrew_packages() {
-    install_with_homebrew "python3"
-    install_with_homebrew "tree"
-    install_with_homebrew "telnet"
-    install_with_homebrew "watch"
+    install_homebrew_if_not_exists
+    brew install "python3"
+    brew install "tree"
+    brew install "telnet"
+    brew install "watch"
+    brew install automake
+    brew install libtool
 }
 
 function install_homebrew_cask_packages() {

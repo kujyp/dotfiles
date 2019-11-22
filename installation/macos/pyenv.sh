@@ -9,7 +9,8 @@ eval \"\$(pyenv virtualenv-init -)\"
 " >> ~/.zshrc
 source ~/.zshrc
 
-# pyenv install --list | grep 3.6
+# pyenv install --list | grep 3.5
+pyenv install --skip-existing 3.5.9
 pyenv install --skip-existing 3.6.9
 pyenv install --skip-existing 3.7.5
 pyenv install --skip-existing 2.7.17
