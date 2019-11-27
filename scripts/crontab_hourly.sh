@@ -48,12 +48,6 @@ git_pull_and_commit_and_push
 )
 
 (
-info_msg "dotfiles_packages..."
-cd ~/workspace/documents/dotfiles_packages
-git_pull_and_commit_and_push
-)
-
-(
 info_msg "private_documents..."
 cd ~/workspace/documents/private_documents
 git_pull_and_commit_and_push
