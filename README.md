@@ -137,6 +137,9 @@ sed -i -e "s/^plugins.*/plugins=(git z zsh-syntax-highlighting zsh-autosuggestio
 sed -i -e "s/^ZSH_THEME.*/ZSH_THEME=\"\"/" ~/.zshrc
 echo -e "\n# Pure\nautoload -U promptinit; promptinit\nprompt pure" >> ~/.zshrc
 echo -e "\n# Bashrc\nif [[ -f ~/.bash_profile ]]; then\n   source ~/.bash_profile\nfi\n" >> ~/.zshrc
+
+# [oh-my-zsh] Insecure completion-dependent directories detected:
+compaudit | xargs chmod g-w,o-w
 ```
 - 공인인증서 - https://github.com/kujyp/private_documents/blob/master/docs/%EA%B3%B5%EC%9D%B8%EC%9D%B8%EC%A6%9D%EC%84%9C.md
 - octotree 구버전설치

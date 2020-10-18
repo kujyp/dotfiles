@@ -10,6 +10,11 @@ eval \"\$(pyenv virtualenv-init -)\"
 source ~/.zshrc
 
 # pyenv install --list | grep 3.5
+pyenv install --skip-existing $(pyenv install --list | grep -E '^\s*3.5' | tail -n1)
+pyenv install --skip-existing $(pyenv install --list | grep -E '^\s*3.6' | tail -n1)
+pyenv install --skip-existing $(pyenv install --list | grep -E '^\s*3.7' | tail -n1)
+pyenv install --skip-existing $(pyenv install --list | grep -E '^\s*3.8' | tail -n1)
+pyenv install --skip-existing $(pyenv install --list | grep -E '^\s*2.7' | tail -n1)
 pyenv install --skip-existing 3.5.9
 pyenv install --skip-existing 3.6.9
 pyenv install --skip-existing 3.7.5
